@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: A Bazuca Financeira da Europa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #F0F4F8; color: #1E293B; }
+        
+        /* Chart Container Styling - Mandatory Requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Constraint width */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height */
+            max-height: 400px;
+            background-color: #ffffff;
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
+        }
+
+        /* Custom Utilities */
+        .card-material {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s;
+        }
+        .card-material:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .arrow-down {
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #3B82F6;
+            margin: 0 auto;
+        }
+    </style>
+    
+    <!-- Chosen Palette: Brilliant Blues & Energetic Oranges -->
+    <!-- Palette Hex Codes: Primary Blue #2563EB, Secondary Orange #F97316, Accent Teal #14B8A6, Dark Text #1E293B, Light Bg #F0F4F8 -->
+
+    <!-- Application Structure Plan:
+         1. Header: Dramatic hook connecting Greenland military threat to financial response.
+         2. Section 1 (The Arsenal): Doughnut chart visualizing the volume of US Debt held by Europe/Allies vs Rest of World.
+         3. Section 2 (The Mechanism): A structured flow diagram (HTML/CSS) showing the causal chain: Debt Sell-off -> Yield Spike -> Economic Crash.
+         4. Section 3 (Impact Simulation): Line chart comparing a "Normal" economic scenario vs. a "Bazooka Fired" scenario (Inverse correlation of Yields vs Dollar).
+         5. Section 4 (Comparative Power): Bar chart comparing the value of the Debt Weapon vs US Military Budget.
+         6. Conclusion: Summary of why this works as a deterrent (Davos context).
+    -->
+
+    <!-- Visualization & Content Choices:
+         1. Source: US Debt Ownership ($10T figure). Goal: Inform/Proportion. Viz: Doughnut Chart. Justification: Shows the sheer scale of the "Bazooka" relative to the total pot. Library: Chart.js.
+         2. Source: Economic Mechanism. Goal: Organize/Process. Viz: CSS Flow Diagram. Justification: Best for showing step-by-step logic without SVG. Library: HTML/CSS/Tailwind.
+         3. Source: Market Impact (Yields/Currency). Goal: Change/Scenario. Viz: Line Chart. Justification: Ideal for showing diverging trends over time during a crisis. Library: Chart.js.
+         4. Source: Financial vs Military Power. Goal: Compare. Viz: Bar Chart. Justification: Highlights the asymmetry of the threat. Library: Chart.js.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section -->
+    <header class="bg-blue-600 text-white pb-12 pt-16 px-4 mb-8 shadow-lg">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight uppercase">A Bazuca Financeira</h1>
+            <p class="text-xl md:text-2xl font-light text-blue-100 max-w-3xl mx-auto">
+                Por que a Europa não precisa de tiros para defender a Groenlândia de aventuras militares.
+            </p>
+            <div class="mt-8 inline-block bg-orange-500 text-white font-bold py-2 px-6 rounded-full shadow-md animate-pulse">
+                US$ 10 Trilhões em Jogo
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Intro Text Full Width -->
+        <div class="col-span-1 md:col-span-2 mb-4">
+            <div class="card-material p-8 border-l-8 border-orange-500">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4">O Poder da Dissuasão Econômica</h2>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Em um cenário onde tensões geopolíticas escalam — como a ambição hipotética de Trump sobre a Groenlândia — a resposta europeia transcende o poderio militar convencional. Analistas sugerem que a maior arma contra a ganância territorial não são mísseis, mas sim a alavancagem financeira maciça. A Europa e seus aliados detêm uma parcela crítica da dívida pública americana, um instrumento capaz de desestabilizar a economia dos EUA sem disparar um único tiro.
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 1: The Arsenal (Doughnut Chart) -->
+        <div class="col-span-1 md:col-span-1 flex flex-col">
+            <div class="card-material p-6 h-full">
+                <h3 class="text-xl font-bold text-blue-700 mb-2">O Arsenal Silencioso</h3>
+                <p class="text-sm text-slate-500 mb-6">
+                    Estimativas apontam que o bloco europeu e seus aliados estratégicos controlam cerca de <strong>10 trilhões de dólares</strong> em títulos do tesouro americano. Este gráfico ilustra a magnitude dessa "bazuca" em comparação com outras participações.
+                </p>
+                
+                <!-- Chart Container -->
+                <div class="chart-container">
+                    <canvas id="debtDistributionChart"></canvas>
+                </div>
+                
+                <div class="mt-4 text-xs text-center text-slate-400">
+                    Fonte: Análise baseada em relatórios de dívida soberana.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: The Mechanism (CSS Diagram) -->
+        <div class="col-span-1 md:col-span-1 flex flex-col">
+            <div class="card-material p-6 h-full bg-slate-50">
+                <h3 class="text-xl font-bold text-blue-700 mb-2">Mecanismo de Detonação</h3>
+                <p class="text-sm text-slate-500 mb-6">
+                    Como o despejo desses títulos no mercado (Dumping) funcionaria como uma arma de destruição econômica em massa? O fluxo abaixo detalha a reação em cadeia.
+                </p>
+
+                <!-- HTML/CSS Diagram (No SVG) -->
+                <div class="flex flex-col items-center space-y-2 mt-4">
+                    <!-- Step 1 -->
+                    <div class="w-full bg-white border-2 border-blue-500 rounded-lg p-4 shadow text-center relative z-10">
+                        <div class="text-2xl mb-1">📉</div>
+                        <h4 class="font-bold text-slate-800">Venda Massiva</h4>
+                        <p class="text-xs text-slate-600">Europa liquida Títulos do Tesouro</p>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="text-blue-500 text-2xl font-bold">↓</div>
+
+                    <!-- Step 2 -->
+                    <div class="w-full bg-white border-2 border-orange-500 rounded-lg p-4 shadow text-center relative z-10">
+                        <div class="text-2xl mb-1">📈</div>
+                        <h4 class="font-bold text-slate-800">Explosão dos Juros</h4>
+                        <p class="text-xs text-slate-600">Preço dos títulos cai, Yields disparam</p>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="text-orange-500 text-2xl font-bold">↓</div>
+
+                    <!-- Step 3 -->
+                    <div class="w-full bg-slate-800 border-2 border-slate-900 rounded-lg p-4 shadow text-center relative z-10">
+                        <div class="text-2xl mb-1">💣</div>
+                        <h4 class="font-bold text-white">Colapso do Dólar</h4>
+                        <p class="text-xs text-slate-300">Custo da dívida torna-se insustentável</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Impact Simulation (Line Chart) -->
+        <div class="col-span-1 md:col-span-2">
+            <div class="card-material p-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-700">Simulação de Impacto: "O Dia D"</h3>
+                        <p class="text-sm text-slate-500 mt-1 max-w-2xl">
+                            Este gráfico projeta o efeito inverso devastador nos primeiros 30 dias após o início de uma venda coordenada. Enquanto os juros (Yields) sobem para atrair compradores, o valor do Dólar despenca, criando uma crise inflacionária imediata nos EUA.
+                        </p>
+                    </div>
+                    <div class="mt-4 md:mt-0 px-3 py-1 bg-red-100 text-red-600 rounded text-xs font-bold uppercase tracking-wide">
+                        Cenário de Crise
+                    </div>
+                </div>
+
+                <!-- Chart Container Full Width -->
+                <div class="w-full flex justify-center">
+                    <div class="chart-container" style="max-width: 900px;"> <!-- Override max-width for this wide chart -->
+                        <canvas id="impactSimulationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Comparative Power (Bar Chart) -->
+        <div class="col-span-1 md:col-span-1">
+            <div class="card-material p-6 h-full">
+                <h3 class="text-xl font-bold text-blue-700 mb-2">Assimetria de Poder</h3>
+                <p class="text-sm text-slate-500 mb-6">
+                    Comparando o custo anual do poderio militar americano com o valor nominal dos ativos em posse europeia. A alavancagem financeira supera o orçamento de defesa.
+                </p>
+
+                <div class="chart-container">
+                    <canvas id="powerComparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Takeaways / Qualitative Analysis -->
+        <div class="col-span-1 md:col-span-1">
+            <div class="card-material p-6 h-full bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+                <h3 class="text-xl font-bold mb-4 border-b border-blue-400 pb-2">Conclusão Estratégica</h3>
+                <ul class="space-y-6">
+                    <li class="flex items-start">
+                        <span class="text-2xl mr-4">🛡️</span>
+                        <div>
+                            <h4 class="font-bold text-blue-100">Dissuasão Eficaz</h4>
+                            <p class="text-sm text-blue-200 mt-1">
+                                O medo de um colapso financeiro induzido é mais persuasivo em Davos do que ameaças militares.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-2xl mr-4">🌍</span>
+                        <div>
+                            <h4 class="font-bold text-blue-100">Interdependência</h4>
+                            <p class="text-sm text-blue-200 mt-1">
+                                A economia globalizada transforma dívida soberana em munição geopolítica de alto calibre.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-2xl mr-4">🧊</span>
+                        <div>
+                            <h4 class="font-bold text-blue-100">O Caso Groenlândia</h4>
+                            <p class="text-sm text-blue-200 mt-1">
+                                A "aventura hostil" torna-se inviável quando o custo é a estabilidade da própria moeda de reserva mundial.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400 py-8 text-center text-sm">
+        <p>Infográfico gerado com base em análise geopolítica e financeira.</p>
+        <p class="mt-2">&copy; 2024 Visualização de Dados Estratégicos</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Utility: Label Wrapping Helper ---
+        // Splits long strings into arrays of strings for Chart.js multiline support
+        function wrapLabel(str, maxChars) {
+            if (str.length <= maxChars) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        // --- Utility: Common Chart Options ---
+        // Includes the MANDATORY Tooltip Configuration and Responsive defaults
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        font: { family: "'Roboto', sans-serif", size: 12 },
+                        color: '#475569' // Slate 600
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(30, 41, 59, 0.9)', // Slate 800
+                    titleColor: '#fff',
+                    bodyColor: '#cbd5e1',
+                    padding: 12,
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            } else {
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // --- Chart 1: Debt Distribution (Doughnut) ---
+        const ctxDebt = document.getElementById('debtDistributionChart').getContext('2d');
+        const debtLabels = ['Bazuca Europeia (Aliados)', 'China & Estrangeiros', 'Dívida Doméstica (EUA)'];
+        // Processing labels for wrapping
+        const processedDebtLabels = debtLabels.map(l => wrapLabel(l, 16));
+
+        new Chart(ctxDebt, {
+            type: 'doughnut',
+            data: {
+                labels: processedDebtLabels,
+                datasets: [{
+                    label: 'Trilhões de USD',
+                    data: [10, 7.5, 16.5], // Estimate based on ~34T total, 10T Europe/Allies hypothesis
+                    backgroundColor: [
+                        '#2563EB', // Primary Blue (Europe)
+                        '#F97316', // Orange (China/Others)
+                        '#CBD5E1'  // Light Slate (Domestic)
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#ffffff',
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                ...commonOptions,
+                cutout: '60%',
+                plugins: {
+                    ...commonOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Detentores da Dívida (Estimado)',
+                        font: { size: 16, weight: 'bold' },
+                        padding: { bottom: 20 }
+                    }
+                }
+            }
+        });
+
+        // --- Chart 2: Impact Simulation (Line) ---
+        const ctxImpact = document.getElementById('impactSimulationChart').getContext('2d');
+        const impactLabels = ['Dia 1', 'Dia 5', 'Dia 10', 'Dia 15', 'Dia 20', 'Dia 25', 'Dia 30'];
+        
+        new Chart(ctxImpact, {
+            type: 'line',
+            data: {
+                labels: impactLabels,
+                datasets: [
+                    {
+                        label: 'Taxa de Juros (Yield 10 Anos)',
+                        data: [4.2, 4.8, 5.5, 6.8, 8.2, 9.5, 11.0], // Hypothetical spike
+                        borderColor: '#F97316', // Orange (Danger)
+                        backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        yAxisID: 'y',
+                        fill: true
+                    },
+                    {
+                        label: 'Índice Dólar (DXY)',
+                        data: [104, 100, 95, 88, 80, 72, 65], // Hypothetical crash
+                        borderColor: '#2563EB', // Blue
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        borderWidth: 3,
+                        borderDash: [5, 5],
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                ...commonOptions,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: { display: true, text: 'Yields (%)' },
+                        grid: { color: '#e2e8f0' }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: { display: true, text: 'Valor do Dólar' },
+                        grid: { drawOnChartArea: false }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // --- Chart 3: Power Comparison (Bar) ---
+        const ctxPower = document.getElementById('powerComparisonChart').getContext('2d');
+        const powerLabels = ['Orçamento Militar Anual EUA', 'Bazuca de Dívida Europeia'];
+        const processedPowerLabels = powerLabels.map(l => wrapLabel(l, 16));
+
+        new Chart(ctxPower, {
+            type: 'bar',
+            data: {
+                labels: processedPowerLabels,
+                datasets: [{
+                    label: 'Trilhões de USD',
+                    data: [0.85, 10.0], // ~850B Military vs 10T Debt
+                    backgroundColor: [
+                        '#94A3B8', // Slate (Military - Boring)
+                        '#2563EB'  // Vibrant Blue (Debt - Powerful)
+                    ],
+                    borderRadius: 6,
+                    barPercentage: 0.6
+                }]
+            },
+            options: {
+                ...commonOptions,
+                indexAxis: 'y', // Horizontal Bar for better label reading
+                plugins: {
+                    ...commonOptions.plugins,
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Poder de Fogo Financeiro vs Militar',
+                        font: { size: 14 }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: '#f1f5f9' },
+                        title: { display: true, text: 'Trilhões (US$)' }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
